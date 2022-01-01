@@ -18,6 +18,21 @@ document.addEventListener('DOMContentLoaded', () =>{
     let interval =0
 
     //assign functions to key codes
-    //each keys on the keyboard has keycodes assing to it
-    
+    //each keys on the keyboard has keycodes assign to it
+    function control(e) {
+        squares[currentIndex].classList.remove('snake')  //we are removing the class of snake from all the squares
+
+        if(e.keyCode === 39) {
+            direction=1 //if we press the right arrow button in keyboard the snake will go right one
+        } else if (e.keyCode === 38) {
+            direction = -width // if we presss up arrow the snake will go back ten divs ,appearing to go up
+        } else if (e.keyCode === 37){
+            direction -1 // if we press left the snake will go left one div
+        } else if (e.keyCode === 40) {
+            direction = +width  // if we press down the snake head will instantly appear in the div ten divs where you are now
+        }
+    }
+
+    document.addEventListener('keyup', control)   //finally lets add eventlistner every time a key is pressed to excecute the function control
+
 })
