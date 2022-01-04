@@ -17,6 +17,12 @@ document.addEventListener('DOMContentLoaded', () =>{
     let intervalTime = 0
     let interval =0
 
+// to start and restart a game
+
+
+
+
+
     //assign functions to key codes
     //each keys on the keyboard has keycodes assign to it
     function control(e) {
