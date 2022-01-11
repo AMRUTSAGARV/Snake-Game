@@ -23,7 +23,7 @@ function startGame() {
     squares[appleIndex].classList.remove('apple')
     clearInterval(interval)
     score =0
-    //randomApple()
+    randomApple()
     direction = 1
     scoreDisplay.innerText = score
     intervalTime = 1000
@@ -56,7 +56,7 @@ if(squares[currentSnake[0]].classList.contains('apple')) {
     squares[currentSnake[0]].classList.remove('apple')
     squares[tail].classList.add('snake')
     currentSnake.push(tail)
-    //randomApple()
+    randomApple()
     score++
     scoreDisplay.textContent = score
     clearInterval(interval)
@@ -64,6 +64,15 @@ if(squares[currentSnake[0]].classList.contains('apple')) {
     interval = setInterval(moveOutcomes, intervalTime)
 }
 squares[currentSnake[0]].classList.add('snake')
+}
+
+
+//generate new apple once appl eis eaten
+function randomApple() {
+    do {
+        appleIndex = Math.floor(Math.random() * squares.length)
+    } while(squares[appleIndex].classList.contains('snake'))
+    squares[appleIndex].classList.add('apple')
 }
 
 
@@ -79,12 +88,12 @@ squares[currentSnake[0]].classList.add('snake')
         } else if (e.keyCode === 38) {
             direction = -width // if we presss up arrow the snake will go back ten divs ,appearing to go up
         } else if (e.keyCode === 37){
-            direction -1 // if we press left the snake will go left one div
+            direction = -1 // if we press left the snake will go left one div
         } else if (e.keyCode === 40) {
             direction = +width  // if we press down the snake head will instantly appear in the div ten divs where you are now
         }
     }
 
     document.addEventListener('keyup', control)   //finally lets add eventlistner every time a key is pressed to excecute the function control
-
+    startBtn.addEventListener('click', startGame)
 })
